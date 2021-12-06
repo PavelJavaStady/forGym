@@ -2,12 +2,12 @@
 <html lang="en" xmlns:th="http.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Все клиенты</title>
+    <title>Клиенты</title>
     <link rel="stylesheet"type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
 </head>
 <body>
 <div class="container text-center">
-    <div><h1>Клиенты</h1></div>
+    <div><h1>Ваши клиенты</h1></div>
     <div>
         <table class="table table-bordered">
             <thead class="thead-dark">
@@ -18,10 +18,7 @@
                 <th>Возраст</th>
                 <th>Пол</th>
                 <th>Телефон</th>
-                <th>Тренер</th>
-                <th><div class="p-2">
-                    <a class="h5" th:href="@{clients/new}">Добавить нового клиента</a>
-                </div></th>
+                <th></th>
             </tr>
             </thead>
             <tbody>
@@ -33,10 +30,9 @@
                     <td>[[${client.age}]]</td>
                     <td>[[${client.sex}]]</td>
                     <td>[[${client.phoneNumber}]]</td>
-                    <td>[[${client.trainer}]]</td>
-                    <td><a th:href="@{'clients/edit/' + ${client.id}}">Изменить</a>
+                    <td><a th:href="@{'workouts/new/' + ${client.id}}">Написать тренировку</a>
                         &nbsp;&nbsp;
-                        <a th:href="@{'clients/delete/' + ${client.id}}">Удалить</a></td>
+                        <a th:href="@{'/trainer/workouts/' + ${client.id}}"> Все тренировки клиента</a></td>
                 </tr>
             </th:block>
             </tbody>

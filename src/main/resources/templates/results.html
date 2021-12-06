@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Результаты тренировки</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+</head>
+<body>
+<div class="container text-center">
+    <h1>Результаты тренировки</h1>
+    <div class="p-2">
+        <p class="h4" th:text="'Вес клиента: ' + ${resultWorkouts.weightClients}"/>
+    </div>
+    <div class="p-2">
+        <p class="h4" th:text="'Результаты: ' + ${resultWorkouts.results}"/>
+    </div>
+</div>
+</body>
+</html>

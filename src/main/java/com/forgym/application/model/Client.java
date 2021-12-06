@@ -4,6 +4,9 @@ package com.forgym.application.model;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
+
 @Data
 @Entity
 public class Client {
@@ -25,6 +28,10 @@ public class Client {
     @ManyToOne
     @JoinColumn(name = "trainer_id")
     private Trainer trainer;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "client_id")
+    private List<Workout> workoutList = new ArrayList<>();
 
 
     @Override

@@ -1,10 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet"type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
 </head>
 <body>
-For gym
+<div class="container text-center">
+    <div><h1>Для тренажерного зала</h1></div>
+    <div class="p-2">
+        <a class="h2" th:href="@{trainers}">Все тренера</a>
+    </div>
+    <div class="p-2">
+        <a class="h2" th:href="@{clients}">Все клиенты</a>
+    </div>
+    <div class="p-2">
+        <a class="h2" th:href="@{trainer}">Посмотреть моих клиентов</a>
+    </div>
+    <div class="p-2">
+        <a class="h2" th:href="@{client}">Посмотреть мои тренировки</a>
+    </div>
+</div>
 </body>
 </html>
