@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http.thymeleaf.org">
+<html lang="en" xmlns:th="http.thymeleaf.org"
+      xmlns:sec="http.thymeleaf.org/thymleaf-extras-springsecurity5">
 <head>
     <meta charset="UTF-8">
     <title>Все тренера</title>
@@ -19,7 +20,7 @@
                 <th>Пол</th>
                 <th>Телефон</th>
                 <th>Клиенты</th>
-                <th><div class="p-2">
+                <th sec:authorize="hasAuthority('ADMIN')"><div class="p-2">
                     <a class="h5" th:href="@{trainers/new}">Добавить нового тренера</a>
                 </div></th>
             </tr>
@@ -34,7 +35,7 @@
                     <td>[[${trainer.sex}]]</td>
                     <td>[[${trainer.phoneNumber}]]</td>
                     <td>[[${trainer.clients}]]</td>
-                    <td><a th:href="@{'trainers/edit/' + ${trainer.id}}">Изменить</a>
+                    <td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{'trainers/edit/' + ${trainer.id}}">Изменить</a>
                     &nbsp;&nbsp;
                     <a th:href="@{'trainers/delete/' + ${trainer.id}}">Удалить</a></td>
                 </tr>
