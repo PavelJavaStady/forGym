@@ -1,0 +1,2 @@
+
+INSERT INTO `for_gym`.`users` (`email`, `password`, `first_name`, `last_name`, `role`) VALUES ('admin@mail.com','$2a$12$YJORSq84nbnLA4xuoGypW.MbmrneA1MDa7m/Rl1mzRgHecD6xusWm','Admin','Adminow', 'ADMIN');

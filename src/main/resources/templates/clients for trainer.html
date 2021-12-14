@@ -2,22 +2,40 @@
 <html lang="en" xmlns:th="http.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Клиенты</title>
+    <title>Clients</title>
     <link rel="stylesheet"type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
 </head>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" th:href="@{/logout}" method="post">For gym</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div style="color: white" class="nav-item active">
+            <h5>Hello, <span th:text="${#httpServletRequest.remoteUser}"></span></h5>
+        </div>
+        <div class="text-center" id="navbarNav">
+            <form th:action="@{/logout}"method="post">
+                <input type="submit" value="logout"/></form>
+        </div>
+    </div>
+</nav>
+<br>
+<br>
+<br>
 <body>
 <div class="container text-center">
-    <div><h1>Ваши клиенты</h1></div>
+    <div><h1>My clients</h1></div>
     <div>
         <table class="table table-bordered">
             <thead class="thead-dark">
             <tr>
-                <th>Номер</th>
-                <th>Имя</th>
-                <th>Фамилия</th>
-                <th>Возраст</th>
-                <th>Пол</th>
-                <th>Телефон</th>
+                <th>ID</th>
+                <th>First name</th>
+                <th>Last name</th>
+                <th>Age</th>
+                <th>Sex</th>
+                <th>Phone</th>
                 <th></th>
             </tr>
             </thead>
@@ -30,9 +48,9 @@
                     <td>[[${client.age}]]</td>
                     <td>[[${client.sex}]]</td>
                     <td>[[${client.phoneNumber}]]</td>
-                    <td><a th:href="@{'workouts/new/' + ${client.id}}">Написать тренировку</a>
+                    <td><a th:href="@{'workouts/new/' + ${client.id}}">Add workout</a>
                         &nbsp;&nbsp;
-                        <a th:href="@{'/trainer/workouts/' + ${client.id}}"> Все тренировки клиента</a></td>
+                        <a th:href="@{'/trainer/workouts/' + ${client.id}}"> All workouts</a></td>
                 </tr>
             </th:block>
             </tbody>

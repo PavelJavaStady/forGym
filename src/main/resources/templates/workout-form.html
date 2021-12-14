@@ -2,24 +2,42 @@
 <html lang="en" xmlns:th="http.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Написать тренировку</title>
+    <title>Add workout</title>
     <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
 </head>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" th:href="@{/logout}" method="post">For gym</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div style="color: white" class="nav-item active">
+            <h5>Hello, <span th:text="${#httpServletRequest.remoteUser}"></span></h5>
+        </div>
+        <div class="text-center" id="navbarNav">
+            <form th:action="@{/logout}"method="post">
+                <input type="submit" value="logout"/></form>
+        </div>
+    </div>
+</nav>
+<br>
+<br>
+<br>
 <body>
 <div class="container text-center">
-    <div><h1>Написать тренировку</h1></div>
+    <div><h1>Write workout</h1></div>
     <form th:action="@{/workouts/save}" th:object="${workout}" method="post"
           style="max-width: 600px; margin: 0 auto;">
         <input type="hidden" th:value="${client.id}" id="client" name="client" />
         <div class="m-3">
             <div class="form-group row">
-                <label class="col-form-label col-sm-4"> Дата (д.м.год):</label>
+                <label class="col-form-label col-sm-4"> Date (dd.MM.yyyy):</label>
                 <div class="col-sm-8">
                     <input type="text" th:field="*{date}" class="form-control" required/>
                 </div>
             </div>
             <div class="form-group row">
-                <label class="col-form-label col-sm-4">Упражнения:</label>
+                <label class="col-form-label col-sm-4">Exercises:</label>
                 <div class="col-sm-8">
                     <select multiple="multiple" size="4" th:field="*{exercises}"  class="form-control" required>
                         <th:block th:each="exercise:${exerciseList}">
@@ -29,13 +47,13 @@
                 </div>
             </div>
             <div class="form-group row">
-                <label class="col-form-label col-sm-4"> Написать пояснение к тренировке:</label>
+                <label class="col-form-label col-sm-4"> Write explanations for workout:</label>
                 <div class="col-sm-8" >
                 <textarea type="text" th:field="*{explanations}" class="form-control" rows="3"></textarea>
             </div>
             </div>
             <div class="text-center p-3">
-                <button type="submit" class="btn btn-primary">Сохранить </button>
+                <button type="submit" class="btn btn-primary">Save </button>
             </div>
         </div>
     </form>

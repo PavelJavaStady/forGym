@@ -2,25 +2,43 @@
 <html lang="en" xmlns:th="http.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Все клиенты</title>
+    <title>All clients</title>
     <link rel="stylesheet"type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
 </head>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" th:href="@{/logout}" method="post">For gym</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div style="color: white" class="nav-item active">
+            <h5>Hello, <span th:text="${#httpServletRequest.remoteUser}"></span></h5>
+        </div>
+        <div class="text-center" id="navbarNav">
+            <form th:action="@{/logout}"method="post">
+                <input type="submit" value="logout"/></form>
+        </div>
+    </div>
+</nav>
+<br>
+<br>
+<br>
 <body>
 <div class="container text-center">
-    <div><h1>Клиенты</h1></div>
+    <div><h1>Clients</h1></div>
     <div>
         <table class="table table-bordered">
             <thead class="thead-dark">
             <tr>
-                <th>Номер</th>
-                <th>Имя</th>
-                <th>Фамилия</th>
-                <th>Возраст</th>
-                <th>Пол</th>
-                <th>Телефон</th>
-                <th>Тренер</th>
+                <th>ID</th>
+                <th>First name</th>
+                <th>Last name</th>
+                <th>Age</th>
+                <th>Sex</th>
+                <th>Phone</th>
+                <th>Trainer</th>
                 <th><div class="p-2">
-                    <a class="h5" th:href="@{clients/new}">Добавить нового клиента</a>
+                    <a class="h5" th:href="@{clients/new}">Add new client</a>
                 </div></th>
             </tr>
             </thead>
@@ -34,9 +52,9 @@
                     <td>[[${client.sex}]]</td>
                     <td>[[${client.phoneNumber}]]</td>
                     <td>[[${client.trainer}]]</td>
-                    <td><a th:href="@{'clients/edit/' + ${client.id}}">Изменить</a>
+                    <td><a th:href="@{'clients/edit/' + ${client.id}}">Edite</a>
                         &nbsp;&nbsp;
-                        <a th:href="@{'clients/delete/' + ${client.id}}">Удалить</a></td>
+                        <a th:href="@{'clients/delete/' + ${client.id}}">Delete</a></td>
                 </tr>
             </th:block>
             </tbody>

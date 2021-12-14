@@ -57,22 +57,21 @@ public class ClientController {
     }
 
     @GetMapping("clients/delete/{id}")
-    public String deleteProduct(@PathVariable("id") Integer id, Model model) {
+    public String deleteClient(@PathVariable("id") Integer id, Model model) {
         clientRepository.deleteById(id);
         return "redirect:/clients";
     }
 
     @GetMapping("/client")
-    public String showClientForm(Model model) {
+    public String showWorkoutsForClientForm(Model model) {
         model.addAttribute("client", new Client());
         return "client";
     }
     @PostMapping("/client")
-    public String showMyWorkouts(@ModelAttribute Client client, Model model) {
+    public String showWorkoutsForClient(@ModelAttribute Client client, Model model) {
         Client client1 = clientRepository.findByFirstNameAndLastName(client.getFirstName(), client.getLastName());
         List<Workout> workoutList = client1.getWorkoutList();
         model.addAttribute("workoutList", workoutList);
-       // model.addAttribute("client",client1);
         return "workouts";
     }
 }

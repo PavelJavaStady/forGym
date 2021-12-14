@@ -44,15 +44,15 @@ public class TrainerController {
         return "redirect:/trainers";
     }
 
-    @GetMapping("trainers/edit/{id}")
-    public String showEditClientForm(@PathVariable("id") Integer id, Model model) {
+    @GetMapping("/trainers/edit/{id}")
+    public String showEditTrainerForm(@PathVariable("id") Integer id, Model model) {
         Trainer trainer = trainerRepository.findById(id).get();
         model.addAttribute("trainer", trainer);
         return "trainer-form";
     }
 
-    @GetMapping("trainers/delete/{id}")
-    public String deleteProduct(@PathVariable("id") Integer id, Model model) {
+    @GetMapping("/trainers/delete/{id}")
+    public String deleteTrainer(@PathVariable("id") Integer id, Model model) {
         trainerRepository.deleteById(id);
         return "redirect:/trainers";
     }
@@ -64,7 +64,7 @@ public class TrainerController {
     }
 
     @PostMapping("/trainer")
-    public String showMyClients(@ModelAttribute Trainer trainer, Model model) {
+    public String showClientsForTrainer(@ModelAttribute Trainer trainer, Model model) {
         Trainer trainer1 = trainerRepository.findByFirstNameAndLastName(trainer.getFirstName(), trainer.getLastName());
         List<Client> clientList = trainer1.getClients();
         model.addAttribute("clientList", clientList);
