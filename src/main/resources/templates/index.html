@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http.thymeleaf.org"
-xmlns:sec="http.thymeleaf.org/thymleaf-extras-springsecurity5">
+      xmlns:sec="http.thymeleaf.org/thymleaf-extras-springsecurity5" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <title>For gym</title>
@@ -8,16 +8,17 @@ xmlns:sec="http.thymeleaf.org/thymleaf-extras-springsecurity5">
 </head>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" th:href="@{/logout}" method="post">For gym</a>
+        <a class="navbar-brand" th:href="@{/logout}" method="post">[[#{forGym}]]</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div style="color: white" class="nav-item active">
-            <h5>Hello, <span th:text="${#httpServletRequest.remoteUser}"></span></h5>
+            <h5>[[#{hello}]] <span th:text="${#httpServletRequest.remoteUser}"></span></h5>
         </div>
         <div class="text-center" id="navbarNav">
             <form th:action="@{/logout}"method="post">
-                <input type="submit" value="logout"/></form>
+                <button type="submit">[[#{logout}]]</button>
+            </form>
         </div>
     </div>
 </nav>
@@ -28,19 +29,19 @@ xmlns:sec="http.thymeleaf.org/thymleaf-extras-springsecurity5">
 <div class="container text-center">
 
     <div sec:authorize="hasAuthority('ADMIN')" class="p-2">
-        <a class="h2" th:href="@{users}">All users</a>
+        <a class="h2" th:href="@{users}">[[#{all.users}]]</a>
     </div>
     <div sec:authorize="hasAuthority('ADMIN')" class="p-2">
-        <a class="h2" th:href="@{trainers}">All trainers</a>
+        <a class="h2" th:href="@{trainers}">[[#{all.trainers}]]</a>
     </div>
     <div sec:authorize="hasAuthority('ADMIN')" class="p-2">
-        <a class="h2" th:href="@{clients}">All clients</a>
+        <a class="h2" th:href="@{clients}">[[#{all.clients}]]</a>
     </div>
     <div sec:authorize="hasAuthority('TRAINER')" class="p-2">
-        <a class="h2" th:href="@{trainer}">Show my clients</a>
+        <a class="h2" th:href="@{trainer}">[[#{show.my.clients}]]</a>
     </div>
     <div sec:authorize="hasAuthority('CLIENT')" class="p-2">
-        <a class="h2" th:href="@{client}">Show my workouts</a>
+        <a class="h2" th:href="@{client}">[[#{show.my.workouts}]]</a>
     </div>
 </div>
 </body>
