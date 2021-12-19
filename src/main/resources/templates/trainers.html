@@ -8,16 +8,17 @@
 </head>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" th:href="@{/logout}" method="post">For gym</a>
+        <a class="navbar-brand" th:href="@{/logout}" method="post">[[#{forGym}]]</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div style="color: white" class="nav-item active">
-            <h5>Hello, <span th:text="${#httpServletRequest.remoteUser}"></span></h5>
+            <h5>[[#{hello}]] <span th:text="${#httpServletRequest.remoteUser}"></span></h5>
         </div>
         <div class="text-center" id="navbarNav">
             <form th:action="@{/logout}"method="post">
-                <input type="submit" value="logout"/></form>
+                <button type="submit">[[#{logout}]]</button>
+            </form>
         </div>
     </div>
 </nav>
@@ -26,20 +27,20 @@
 <br>
 <body>
 <div class="container text-center">
-    <div><h1>All trainers</h1></div>
+    <div><h1>[[#{all.trainers}]]</h1></div>
     <div sec:authorize="hasAuthority('ADMIN')">
         <table class="table table-bordered">
             <thead class="thead-dark">
             <tr>
-                <th>ID</th>
-                <th>First name</th>
-                <th>Last name</th>
-                <th>Age</th>
-                <th>Sex</th>
-                <th>Phone</th>
-                <th>Clients</th>
+                <th>[[#{id}]]</th>
+                <th>[[#{first.name}]]</th>
+                <th>[[#{last.name}]]</th>
+                <th>[[#{age}]]</th>
+                <th>[[#{sex}]]</th>
+                <th>[[#{phone}]]</th>
+                <th>[[#{clients}]]</th>
                 <th><div class="p-2">
-                    <a class="h5" th:href="@{trainers/new}">Add new trainer</a>
+                    <a class="h5" th:href="@{trainers/new}">[[#{add.new.trainer}]]</a>
                 </div></th>
             </tr>
             </thead>
@@ -53,9 +54,9 @@
                     <td>[[${trainer.sex}]]</td>
                     <td>[[${trainer.phoneNumber}]]</td>
                     <td>[[${trainer.clients}]]</td>
-                    <td><a th:href="@{'trainers/edit/' + ${trainer.id}}">Edite</a>
+                    <td><a th:href="@{'trainers/edit/' + ${trainer.id}}">[[#{edite}]]</a>
                     &nbsp;&nbsp;
-                    <a th:href="@{'trainers/delete/' + ${trainer.id}}">Delete</a></td>
+                    <a th:href="@{'trainers/delete/' + ${trainer.id}}">[[#{delete}]]</a></td>
                 </tr>
             </th:block>
             </tbody>

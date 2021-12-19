@@ -7,16 +7,17 @@
 </head>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" th:href="@{/logout}" method="post">For gym</a>
+        <a class="navbar-brand" th:href="@{/logout}" method="post">[[#{forGym}]]</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div style="color: white" class="nav-item active">
-            <h5>Hello, <span th:text="${#httpServletRequest.remoteUser}"></span></h5>
+            <h5>[[#{hello}]] <span th:text="${#httpServletRequest.remoteUser}"></span></h5>
         </div>
         <div class="text-center" id="navbarNav">
             <form th:action="@{/logout}"method="post">
-                <input type="submit" value="logout"/></form>
+                <button type="submit">[[#{logout}]]</button>
+            </form>
         </div>
     </div>
 </nav>
@@ -25,12 +26,13 @@
 <br>
 <body>
 <div class="container text-center">
-    <h1>Results workout</h1>
+    <h1>[[#{results.workout}]]</h1>
+    <br>
     <div class="p-2">
-        <p class="h4" th:text="'Weight clients: ' + ${resultWorkouts.weightClients}"/>
+        <p class="h4" th:text="#{weight.clients} + '  ' + ${resultWorkouts.weightClients}"/>
     </div>
     <div class="p-2">
-        <p class="h4" th:text="'Was done: ' + ${resultWorkouts.results}"/>
+        <p class="h4" th:text="#{was.done} + '  '+ ${resultWorkouts.results}"/>
     </div>
 </div>
 </body>
